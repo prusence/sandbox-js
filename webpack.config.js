@@ -1,5 +1,6 @@
 var webpack = require('webpack')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
+var FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 var path = require('path')
 
 module.exports = {
@@ -46,6 +47,7 @@ module.exports = {
         new CopyWebpackPlugin([
             { from: './src/index.html'},
         ]),
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new FriendlyErrorsWebpackPlugin(),
     ]
 }
