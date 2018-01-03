@@ -1,6 +1,15 @@
+var webpack = require('webpack')
+var CopyWebpackPlugin = require('copy-webpack-plugin')
+var path = require('path')
+
 module.exports = {
-    entry: { app: './app.ts', },
-    output: { filename: 'app.js' },
+    entry: {
+        app: './src/ts/app.ts',
+    },
+    output: { 
+        path: path.resolve(__dirname, 'public'),
+        filename: 'app.js' 
+    },
 
     // resolve TypeScript and Vue file
     resolve: {
@@ -24,4 +33,19 @@ module.exports = {
             }
         }]
     },
+
+    devServer: {
+        contentBase: __dirname + '/public',
+        open: true,
+        hot: true,
+        inline: true,
+        port: 8081,
+    },
+
+    plugins: [
+        new CopyWebpackPlugin([
+            { from: './src/index.html'},
+        ]),
+        new webpack.HotModuleReplacementPlugin()
+    ]
 }

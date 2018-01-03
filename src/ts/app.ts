@@ -1,7 +1,7 @@
 declare var require: any
 
 import Vue from 'vue'
-var App = require('./app.vue').default
+var App = require('../vue/app.vue').default
 
 new Vue({
     el: '#app',
